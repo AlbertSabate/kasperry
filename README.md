@@ -4,4 +4,20 @@ Build your production ready home cluster with raspberry pi.
 
 All tutorial free of use :D
 
-*Using Gatsby*
+
+## Develop
+
+`npx gatsby develop`
+
+
+## Build
+
+`npx gatsby build`
+`docker build -t kasperry/blog .`
+`docker run --rm -p 80:80 kasperry/blog`
+
+
+## Third party software
+[Gatsby](https://www.gatsbyjs.org/)
+[Gatsby Docker](https://github.com/gatsbyjs/gatsby-docker)
+[MDX](https://mdxjs.com/)
