@@ -1,13 +1,15 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "name": "kasperry",
+  "description": "Production ready home cluster with raspberry pi",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Albert Sabate",
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.9",
+    "@mdx-js/react": "^1.5.9",
     "gatsby": "^2.20.25",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.3.5",
+    "gatsby-plugin-mdx": "^1.1.10",
     "gatsby-plugin-offline": "^3.1.4",
     "gatsby-plugin-react-helmet": "^3.2.4",
     "gatsby-plugin-sharp": "^2.5.6",
@@ -22,9 +24,12 @@
     "prettier": "2.0.4"
   },
   "keywords": [
-    "gatsby"
+    "kasperry",
+    "raspberry",
+    "cluster",
+    "kubernetes"
   ],
-  "license": "MIT",
+  "license": "CC0-1.0",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -36,9 +41,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/AlbertSabate/kasperry"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/AlbertSabate/kasperry/issues"
   }
 }
