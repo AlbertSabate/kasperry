@@ -13,8 +13,8 @@ All tutorial free of use :D
 ## Build
 
 `npx gatsby build`
-`docker build -t kasperry/blog .`
-`docker run --rm -p 80:80 kasperry/blog`
+`docker build -t kasperry .`
+`docker run --rm -p 80:80 kasperry`
 
 
 ## Third party software
