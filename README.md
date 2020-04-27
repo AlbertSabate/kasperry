@@ -12,13 +12,14 @@ All tutorial free of use :D
 
 ## Build
 
-`npx gatsby build`
-`docker build -t kasperry .`
-`docker run --rm -p 80:80 kasperry`
+```
+npx gatsby build
+docker build -t kasperry .
+docker run --rm -p 80:80 kasperry
+```
 
 
 ## Third party software
 
-[Gatsby](https://www.gatsbyjs.org/)
-[Gatsby Docker](https://github.com/gatsbyjs/gatsby-docker)
-[MDX](https://mdxjs.com/)
+* [Gatsby](https://www.gatsbyjs.org/)
+* [MDX](https://mdxjs.com/)
