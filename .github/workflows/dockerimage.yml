@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: [self-hosted, linux, arm64]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login into docker
+      run: docker login registry.zenet.io -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_URL }}/kasperry:$GITHUB_RUN_ID
+    - name: Tagging master
+      run: docker tag ${{ secrets.REGISTRY_URL }}/kasperry:$GITHUB_RUN_ID ${{ secrets.REGISTRY_URL }}/kasperry:latest
+    - name: Push to docker registry
+      run: docker push ${{ secrets.REGISTRY_URL }}/kasperry
