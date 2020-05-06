@@ -1,0 +1,16 @@
+import SEO from "../components/seo"
+
+<SEO title="Setting up the Hostname" />
+
+# Setting up the Hostname
+To set the hostname we want to the raspberry pi we can execute the following command:
+
+`sudo hostnamectl set-hostname new_host_name`
+
+Now, we need to reboot the raspberry pi.
+
+We can verify everything went right by executing `cat /etc/hostname`.
+
+Friendly note 1: You should be able to resolve the hostname.
+Friendly note 2: The IP of the host should be static, is not enough just using the hostname as domain.
+Friendly note 3: Your hostname should be unique in the network.

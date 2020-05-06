@@ -1,0 +1,30 @@
+import SEO from "../components/seo"
+
+<SEO title="Creating user and remove default ubuntu" />
+
+# Creating user and remove default ubuntu
+To create a new user, we can use the native command: `sudo adduser <user_name>` and follow the steps.
+
+Once our new user is created we want to add it to sudo group. To be easier I just edit the file `/etc/group` and I add the new user to the group `adm` and `sudo`, check if you need to add in another existent group.
+
+I also like to ssh using certificate, I feel more safe than using password. So I will create the file `/home/<new_user_name>/.ssh/authorized_keys` and copy my public ssh key. We can create one with the command `ssh-keygen`. We use the private key to do the login, public goes to server (file spcified before).
+
+*remember change the owner to <new_user_name> with `sudo chown <new_user_name>:<new_user_name> /home/<new_user_name>/.ssh -R`*
+
+Now we are ready to login with the new user, check we have the rights to do sudo and we can proceed to delete the ubuntu user, since is unsafe.
+
+`deluser --remove-all-files ubuntu`
+
+Finally as an optional step, we can disable access ssh with password, since we have configured our certificate.
+
+`sudo vim /etc/ssh/sshd_config`
+
+We want to make sure the following lines are like this:
+```
+PermitRootLogin no
+
+# To disable tunneled clear text passwords, change to no here!
+PasswordAuthentication no
+```
+
+We can configure a lot more stuff here, but I have my firewall, so I think at this stage we don't need more security steps.

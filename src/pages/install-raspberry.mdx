@@ -1,0 +1,30 @@
+import SEO from "../components/seo"
+
+<SEO title="Installing Raspberry PI" />
+
+# Installing Raspberry PI
+Choosing Ubuntu 18.04 LTS 64bits
+
+Download the following image for RPI:
+[Install Ubuntu Server on a Raspberry Pi 2, 3 or 4 | Ubuntu](https://ubuntu.com/download/raspberry-pi)
+
+To install it in the SD Card we can execute the following commands:
+
+`diskutil list`
+`diskutil unmountDisk /dev/disk< drive address number >`
+`sudo sh -c 'gunzip -c ~/Desktop/< image file > | sudo dd of=/dev/disk< drive address number > bs=32m'`
+
+This can take time, don't be scared if you don't see anything is happening.
+If you get really impatient you can press `ctrl+t` and is going to show you the current status.
+
+Do not cancel it! Be patient, it takes around 10 to 15 min.
+
+Once this is done we already can eject the SD Card: 
+`diskutil eject /dev/disk< drive address number >`
+
+Now, we are ready to insert the SD Card into the Raspberry PI, and let the magic happens! :D
+
+*Reminders*
+
+To access to the raspberry pi you can do
+`ssh ubuntu@<IP_ADDRESS>` with the password `ubuntu`.

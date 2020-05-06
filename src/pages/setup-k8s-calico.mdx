@@ -1,0 +1,22 @@
+import SEO from "../components/seo"
+
+<SEO title="Setting up Kubernetes with Calico" />
+
+# Setting up Kubernetes with Calico
+
+Really careful here to not conflict with your local network!!!!!!!!!!! That's SUPER IMPORTANT !!!!
+`sudo kubeadm init --pod-network-cidr=192.168.0.0/16`
+
+In order to have access to kubectl
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+Now we should be able to execute the following command:
+
+`kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml`
+
+[Calico Webpage](https://docs.projectcalico.org/getting-started/kubernetes/quickstart)
+[Compare other CNI](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)

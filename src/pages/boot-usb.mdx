@@ -1,0 +1,30 @@
+import SEO from "../components/seo"
+
+<SEO title="Booting Raspberry Pi 4 from USB" />
+
+# Booting Raspberry PI 4 from USB
+We have to make sure we don't update anything before we change the boot. Since when we change to boot from the SSD all changes will be in the SD Card partition (which we are not going to use anymore).
+
+This is the boot partition: `/dev/mmcblk0p1` mounted at `/boot/firmware`
+This is the main partition: `/dev/mmcblk0p2` no longer used.
+
+We have to have installed the OS as well in the hard drive, a completely replica of the SD Card. Use the same guide to install the SD Card.
+
+First of all we execute `sudo fdisk -l` to check if we have available our external USB drive.
+
+In my case is for boot `/dev/sda1` and the main `/dev/sda2`.
+
+Once we confirm is available, we can start to edit the boot to the SSD.
+
+We edit the file: `/boot/firmware/nobtcmd.txt`.
+
+We have to replace the part of: `root=LABEL=writable` to `root=/dev/sda2`.
+
+Now we can reboot our raspberry pi: `sudo reboot`.
+
+And when we boot we are gonna be using our SSD Disk. Easy right? 🙃
+
+## SUPER IMPORTANT NOTES:
+Now we have to understand how it works.
+
+We have to know even we see mounted as a boot `/dev/sda1`, the real boot is happening in `/dev/mmcblk0p1`. So, when we update the kernel we have to make sure to mount `/dev/mmcblk0p1` as a boot partition and `/dev/sda2` as a main. Is weird, but without this is going to stop working.

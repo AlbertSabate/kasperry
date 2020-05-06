@@ -1,0 +1,10 @@
+import SEO from "../components/seo"
+
+<SEO title="Disable SWAP" />
+
+# Disable SWAP
+As a requirement of kubernetes installation, we have to disable SWAP, since it can cause unexpected problems with kubelet.
+
+`sudo swapoff -a`
+
+then we edit the following file `/etc/fstab` and we have to comment the swap line, if is there. In my case is not there, so no need to do more steps.

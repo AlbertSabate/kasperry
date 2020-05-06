@@ -1,0 +1,26 @@
+import SEO from "../components/seo"
+
+<SEO title="Installing kubeadm & kubelet & kubectl" />
+
+# Installing kubeadm & kubelet & kubectl
+## PreRequisites
+* [Set Hostname](/set-hostname)
+* [IPTables](/config-iptables)
+* [CGroup](/enable-cgroup)
+* [Disable SWAP](/disable-swap)
+* [Install Essentials and Docker](/pre-software)
+
+```
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+
+```
+
+[Installing kubeadm - Kubernetes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
