@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: [self-hosted, linux, arm64]
+    runs-on: [ self-hosted, linux, ARM64 ]
 
     steps:
     - uses: actions/checkout@v2
@@ -22,3 +22,5 @@ jobs:
       run: docker tag ${{ secrets.REGISTRY_URL }}/kasperry:$GITHUB_RUN_ID ${{ secrets.REGISTRY_URL }}/kasperry:latest
     - name: Push to docker registry
       run: docker push ${{ secrets.REGISTRY_URL }}/kasperry
+    - name: Update kubernetes deployment
+      run: helm upgrade --namespace=kasperry kasperry ./helm --reuse-values --set image.tag=$GITHUB_RUN_ID
