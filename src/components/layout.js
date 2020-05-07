@@ -33,7 +33,31 @@ const Layout = ({ children }) => {
             <div className="col">
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/404">Go to 404</Link></li>
+                <li>
+                  Raspberry set-up
+                  <ul>
+                    <li><Link to="/install-raspberry">Install Raspberry</Link></li>
+                    <li><Link to="/create-user">Create a new user</Link></li>
+                    <li><Link to="/boot-usb">Boot from USB</Link></li>
+                  </ul>
+                </li>
+                <li>
+                  Pre-Requisites
+                  <ul>
+                    <li><Link to="/config-iptables">Prepare IPTables</Link></li>
+                    <li><Link to="/disable-swap">Disable SWAP</Link></li>
+                    <li><Link to="/enable-cgroup">Enable CGroup</Link></li>
+                    <li><Link to="/set-hostname">Set Hostname</Link></li>
+                    <li><Link to="/install-docker">Install Docker</Link></li>
+                  </ul>
+                </li>
+                <li>
+                  Install Kubernetes
+                  <ul>
+                    <li><Link to="/install-k8s-pkg">Go to 404</Link></li>
+                    <li><Link to="/setup-k8s-calico">Install Kubernetes with Calico</Link></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
