@@ -18,9 +18,9 @@ spec:
       labels:
         {{- include "kasperry.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      {{- with .Values.imagePullSecret }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
+        - name: {{ .Values.imagePullSecret }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
