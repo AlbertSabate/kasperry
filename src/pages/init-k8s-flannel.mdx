@@ -3,6 +3,7 @@ import SEO from "../components/seo"
 <SEO title="Setting up Kubernetes with Flannel" />
 
 # Setting up Kubernetes with Flannel
+[NOT RECOMMENDED CNI](https://github.com/kubernetes/website/commit/f73647531dcdade2327412253a5f839781d57897/)
 
 Really careful here to not conflict with your local network!!!!!!!!!!! That's SUPER IMPORTANT !!!!
 `sudo kubeadm init --pod-network-cidr=10.244.0.0/16`

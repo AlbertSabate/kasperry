@@ -54,8 +54,9 @@ const Layout = ({ children }) => {
                 <li>
                   Install Kubernetes
                   <ul>
-                    <li><Link to="/install-k8s-pkg">Go to 404</Link></li>
-                    <li><Link to="/setup-k8s-calico">Install Kubernetes with Calico</Link></li>
+                    <li><Link to="/install-k8s-pkg">Install kubernetes packages</Link></li>
+                    <li><Link to="/init-k8s-calico">Init Kubernetes with Calico</Link></li>
+                    <li><Link to="/init-k8s-flannel">Init Kubernetes with Flannel</Link></li>
                   </ul>
                 </li>
               </ul>
