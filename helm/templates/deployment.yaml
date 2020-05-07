@@ -27,19 +27,19 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: web
+            - name: http
               containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /
-              port: web
+              port: http
             initialDelaySeconds: 5
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /
-              port: web
+              port: http
             initialDelaySeconds: 5
             periodSeconds: 5
           resources:
