@@ -33,11 +33,15 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: web
+            initialDelaySeconds: 5
+            periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: web
+            initialDelaySeconds: 5
+            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
