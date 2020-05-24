@@ -38,29 +38,28 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-prismjs`,
-        ]
-      }
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
           default: require.resolve(`./src/components/layout.js`),
         },
+        plugins: [
+          `gatsby-remark-images`,
+          `gatsby-remark-images-medium-zoom`,
+        ],
         gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-relative-images`,
-          },
+          `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 500,
+              maxWidth: 400,
               disableBgImageOnAlpha: true,
+              linkImagesToOriginal: false,
             },
+          },
+          {
+            resolve: `gatsby-remark-images-medium-zoom`,
+            options: {}
           },
         ],
       },

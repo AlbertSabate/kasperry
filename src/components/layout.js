@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
+import Img from 'gatsby-image';
+
 import GlobalStyle from './app.style';
 import { LayoutWrap, NavWrap, ContentWrap } from './layout.style';
 
@@ -23,20 +25,27 @@ const theme = {
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteTitleQueryAndLogo {
       site {
         siteMetadata {
           title
         }
       }
+      file(relativePath: { eq: "icon.png" }) {
+        childImageSharp {
+          fixed(width: 35, height: 35) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
-  `)
+  `);
 
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
         <link
-          href='https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap'
           rel='stylesheet'
         />
       </Helmet>
@@ -44,6 +53,7 @@ const Layout = ({ children }) => {
       <LayoutWrap>
         <NavWrap>
           <header>
+            <Img fixed={ data.file.childImageSharp.fixed } />
             { data.site.siteMetadata.title }
           </header>
           <ul>

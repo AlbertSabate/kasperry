@@ -32,17 +32,23 @@ export const NavWrap = styled.nav`
   header {
     margin-left: -15px;
     margin-right: -15px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 15px;
     font-size: 1.2rem;
     line-height: 2rem;
     color: #f8f9fa;
     background-color: rgba(0, 0, 0, .75);
     box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .15);
+
+    .gatsby-image-wrapper {
+      vertical-align: bottom;
+      margin-right: 10px;
+    }
   }
   
   footer {
     font-size: .7rem;
+    margin-top: 20px;
   }
 `;
 
