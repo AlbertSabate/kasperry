@@ -3,11 +3,10 @@ import SEO from "../components/seo"
 <SEO title="IPTables" />
 
 # IPTables
-Another requisite of kubernetes is give iptables the ability to see bridget traffic. We can achieve that by executing:
+Another requisite of kubernetes is give iptables the ability to see bridge traffic. We can achieve that by executing:
 
-*Remember, you have to execute this as a root user*
-
-```
+```bash{outputLines: 1,3,5-8}{promptUser: root}
+# Note: We have to execute this as a root user
 modprobe br_netfilter
 
 cat <<EOF > /etc/sysctl.d/k8s.conf
@@ -16,4 +15,5 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 
 sysctl --system
+exit
 ```

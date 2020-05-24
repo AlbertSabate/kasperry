@@ -3,8 +3,8 @@ import SEO from "../components/seo"
 <SEO title="Enable CGroup" />
 
 # Enable CGroup
-We have to add to our boot file `/boot/firmware/nobtcmd.txt` the following text at the end of the line `cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory`.
+We have to add to our boot file `/boot/firmware/cmdline.txt` the following text at the end of the line `cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory`.
 
 Make sure you don't create a new line!
 
-Reboot `sudo reboot`
+Reboot `sudo reboot`.

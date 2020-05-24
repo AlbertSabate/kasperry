@@ -15,6 +15,7 @@ export const NavWrap = styled.nav`
   box-shadow: inset 0 .2rem .75rem rgba(0, 0, 0, .15);
 
   h3 {
+    margin: 0;
     padding: 10px 0 5px;
   }
 
@@ -53,12 +54,9 @@ export const NavWrap = styled.nav`
 `;
 
 export const ContentWrap = styled.main`
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   overflow: auto;
   overflow-x: hidden;
-  padding-top: 30px;
-  padding-bottom: 30px;
 `;
 
 export default { LayoutWrap, NavWrap, ContentWrap };

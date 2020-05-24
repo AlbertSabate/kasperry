@@ -3,7 +3,7 @@ import SEO from "../components/seo"
 <SEO title="Install Docker" />
 
 # Install Essentials & Docker
-```
+```bash{outputLines: 1,3-10,12-13,15-19}
 ### Allow apt-get to use a repository over HTTPS
 sudo apt-get install \
     apt-transport-https \
@@ -24,7 +24,6 @@ sudo add-apt-repository \
 
 ### Installing Docker
 sudo apt-get install docker-ce docker-ce-cli containerd.io
-
 ```
 
 That's it!

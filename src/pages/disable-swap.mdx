@@ -5,6 +5,12 @@ import SEO from "../components/seo"
 # Disable SWAP
 As a requirement of kubernetes installation, we have to disable SWAP, since it can cause unexpected problems with kubelet.
 
-`sudo swapoff -a`
+Usually in ubuntu for raspberry is already off, but to make sure let's run:
 
-then we edit the following file `/etc/fstab` and we have to comment the swap line, if is there. In my case is not there, so no need to do more steps.
+```bash{outputLines: 2-3,5}
+sudo swapoff -a
+
+# Open fstab and if we have some line with swap, comment it out.
+sudo vim /etc/fstab
+# Remember! To save and quit vim use: ctrl+c and :wq.
+```

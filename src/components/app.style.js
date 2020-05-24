@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'; 
 
 require('prismjs/themes/prism-okaidia.css');
+require('prismjs/plugins/command-line/prism-command-line.css');
 
 const GlobalStyle = createGlobalStyle`
   ::selection {
@@ -50,7 +51,6 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    margin: 0;
   }
 
   p {

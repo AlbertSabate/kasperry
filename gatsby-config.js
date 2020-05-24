@@ -48,7 +48,16 @@ module.exports = {
           `gatsby-remark-images-medium-zoom`,
         ],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              prompt: {
+                user: 'albert',
+                host: 'kasperry.io',
+                global: false,
+              },
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
