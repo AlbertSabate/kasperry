@@ -3,6 +3,7 @@ module.exports = {
     title: `Kasperry π`,
     description: `Build your production ready home cluster with raspberry pi.`,
     author: `Albert Sabate`,
+    siteUrl: 'https://kasperry.io/',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

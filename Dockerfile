@@ -11,7 +11,7 @@ ENV GATSBY_ACTIVE_ENV=$GATSBY_ACTIVE_ENV
 ENV TZ=$TZ
 
 RUN apt-get update
-RUN apt-get install -y curl build-essential autoconf libvips libvips-dev libvips-tools glib2.0-dev
+RUN apt-get install -y curl build-essential libvips libvips-dev
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
