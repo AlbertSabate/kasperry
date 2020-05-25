@@ -3,28 +3,68 @@ import SEO from "../components/seo"
 <SEO title="Creating user and remove default ubuntu" />
 
 # Creating user and remove default ubuntu
-To create a new user, we can use the native command: `sudo adduser <user_name>` and follow the steps.
+To create a new user, we can use the native command: 
 
-Once our new user is created we want to add it to sudo group. To be easier I just edit the file `/etc/group` and I add the new user to the group `adm` and `sudo`, check if you need to add in another existent group.
+```bash{outputLines: 2}
+sudo adduser <user_name>
+# Follow steps
+```
 
-I also like to ssh using certificate, I feel more safe than using password. So I will create the file `/home/<new_user_name>/.ssh/authorized_keys` and copy my public ssh key. We can create one with the command `ssh-keygen`. We use the private key to do the login, public goes to server (file spcified before).
+Adding the user to admin groups.
+```bash{outputLines: 1,3-4}
+# Manually way to do it, since is a lot of groups. 
+sudo vim /etc/group
+# Add your new <user_name> to all groups which contains ubuntu.
+# Separated by comma.
+exit
+```
 
-*remember change the owner to <new_user_name> with `sudo chown <new_user_name>:<new_user_name> /home/<new_user_name>/.ssh -R`*
+Now you can access again using your new created user.
 
-Now we are ready to login with the new user, check we have the rights to do sudo and we can proceed to delete the ubuntu user, since is unsafe.
+Also, We recommend to login to ssh using certificate, It feels more safe than using password.
 
-`deluser --remove-all-files ubuntu`
 
-Finally as an optional step, we can disable access ssh with password, since we have configured our certificate.
+We start by creating the certificate in our machine.
+```bash{outputLines: 2-4}{promptHost: localhost}
+ssh-keygen
+# Follow steps
+# It creates 2 files, copy all the content of your public cert.
+# Usually id_rsa.pub
+ssh <user_name>@kasperry.io
+```
 
-`sudo vim /etc/ssh/sshd_config`
+Time to configure our new certificate to the server.
+```bash{outputLines: 3}
+mkdir ~/.ssh
+vim ~/.ssh/authorized_keys
+# Copy here the content of the newly created public key.
+```
 
-We want to make sure the following lines are like this:
-```bash
+Check If the rights to do sudo are properly defined and then we can proceed to delete the ubuntu user, since is better not having it.
+
+```bash{outputLines: 2}
+deluser --remove-all-files ubuntu
+# This will delete all files and folders of this user. Make sure you back-up everything before running it.
+```
+
+Finally, as an another recommended step.
+We can disable access ssh using password, since we have already configured our certificate.
+
+```bash{outputLines: 2-4}{promptHost: localhost}
+ssh -i ~/.ssh/id_rsa <user_name>@kasperry.io
+```
+
+Before to go to the next step try to access ssh using certificate.
+
+```bash{outputLines: 2-8}
+sudo vim /etc/ssh/sshd_config
+# We want to make sure the following lines are like this:
+# ---
 PermitRootLogin no
 
 # To disable tunneled clear text passwords, change to no here!
 PasswordAuthentication no
+# ---
 ```
 
-We can configure a lot more stuff here, but I have my firewall, so I think at this stage we don't need more security steps.
+Everything is done here!

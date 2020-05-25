@@ -18,8 +18,8 @@ docker build -t kasperry .
 docker run --rm -p 80:80 kasperry
 ```
 
+Now, open your browser and check what's going on in your http://localhost!
 
 ## Third party software
 
-* [Gatsby](https://www.gatsbyjs.org/)
-* [MDX](https://mdxjs.com/)
+This project is build using Gatsby.

@@ -4,19 +4,31 @@ import SEO from "../components/seo"
 
 # Setting up Kubernetes with Calico
 
-Really careful here to not conflict with your local network!!!!!!!!!!! That's SUPER IMPORTANT !!!!
-`sudo kubeadm init --pod-network-cidr=192.168.0.0/16`
+To initialize the cluster is really easy, we are going to use kubeadm to do it.
 
-In order to have access to kubectl
+```bash{outputLines: 2}
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+# Really careful here to not conflict with your local network!!!!!!!!!!! That's SUPER IMPORTANT !!!!
 ```
+
+We already have created our cluster.
+
+```bash{outputLines: 1}
+# To have access to our cluster using kubectl, run the following commands.
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-Now we should be able to execute the following command:
+Also, kubeadm provide us a join command. This command it should be executed in our worker nodes.
 
-`kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml`
+Finally, we should be able to execute the following command:
 
-[Calico Webpage](https://docs.projectcalico.org/getting-started/kubernetes/quickstart)
-[Compare other CNI](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)
+```bash{outputLines: 1}
+# This apply Calico configurations
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+```
+
+## Information link
+* [Calico Webpage](https://docs.projectcalico.org/getting-started/kubernetes/quickstart)
+* [Compare other CNI](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)

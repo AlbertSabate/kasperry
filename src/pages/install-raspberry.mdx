@@ -3,24 +3,26 @@ import SEO from "../components/seo"
 <SEO title="Installing Raspberry PI" />
 
 # Installing Raspberry PI
-Choosing Ubuntu 18.04 LTS 64bits
+Choosing Ubuntu 20.04 LTS 64bits to set-up the cluster.
 
-Download the following image for RPI:
+You can download the following image for RPI:
 [Install Ubuntu Server on a Raspberry Pi 2, 3 or 4 | Ubuntu](https://ubuntu.com/download/raspberry-pi)
 
-To install it in the SD Card we can execute the following commands:
+To install it in the SD Card we can execute the following commands: (Using MacOS)
 
-`diskutil list`
-`diskutil unmountDisk /dev/disk< drive address number >`
-`sudo sh -c 'gunzip -c ~/Desktop/< image file > | sudo dd of=/dev/disk< drive address number > bs=32m'`
+```bash{outputLines: 2,4}
+diskutil list
+# Check the list to see what is your disk and partition number, in my case is /dev/sda2
+diskutil unmountDisk /dev/sda2
+# Now we have to know where we download the ubuntu image and we have to pass as a param
+sudo sh -c 'gunzip -c ~/Downloads/ubuntu20.04.img.xz | sudo dd of=/dev/sda2 bs=32m'
+```
 
-This can take time, don't be scared if you don't see anything is happening.
-If you get really impatient you can press `ctrl+t` and is going to show you the current status.
-
-Do not cancel it! Be patient, it takes around 10 to 15 min.
+This can take time, don't be scared if you don't see anything.
+If you get really impatient you can press `ctrl+t` to print the current status.
 
 Once this is done we already can eject the SD Card: 
-`diskutil eject /dev/disk< drive address number >`
+`diskutil eject /dev/sda2`.
 
 Now, we are ready to insert the SD Card into the Raspberry PI, and let the magic happens! :D
 
@@ -28,3 +30,5 @@ Now, we are ready to insert the SD Card into the Raspberry PI, and let the magic
 
 To access to the raspberry pi you can do
 `ssh ubuntu@<IP_ADDRESS>` with the password `ubuntu`.
+
+If you are using another OS, you can refer to ubuntu download page and follow the official tutorial.
