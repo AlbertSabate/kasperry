@@ -7,13 +7,17 @@ All tutorial free of use :D
 
 ## Develop
 
-`npx gatsby develop`
+```
+npm install
+npx run develop
+```
 
 
 ## Build
 
 ```
-npx gatsby build
+npm install
+npm run build
 docker build -t kasperry .
 docker run --rm -p 80:80 kasperry
 ```
