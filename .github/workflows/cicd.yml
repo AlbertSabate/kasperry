@@ -14,8 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Login into docker
-      run: docker login registry.zenet.io -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWORD }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_URL }}/kasperry:$GITHUB_RUN_ID
     - name: Tagging master
@@ -23,4 +21,4 @@ jobs:
     - name: Push to docker registry
       run: docker push ${{ secrets.REGISTRY_URL }}/kasperry
     - name: Update kubernetes deployment
-      run: helm upgrade --namespace=kasperry kasperry ./helm --set imagePullSecret=${{ secrets.REGISTRY_SECRET }} --set image.repository=${{ secrets.REGISTRY_URL }}/kasperry --set image.tag=$GITHUB_RUN_ID
+      run: helm upgrade --namespace=kasperry kasperry ./helm --set image.repository=${{ secrets.REGISTRY_URL }}/kasperry --set image.tag=$GITHUB_RUN_ID
